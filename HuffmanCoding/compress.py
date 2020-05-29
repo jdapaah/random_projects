@@ -61,7 +61,7 @@ def dictionary(peach):
 		new_dict[node.char] = code
 		q.put((code + '0', node.left))
 		q.put((code + '1', node.right))
-	return new_dict
+	return new_dict  # key: character, value: binary code for Huffman tree
 
 
 def compress(fname, kiwi: dict):
@@ -77,7 +77,7 @@ def compress(fname, kiwi: dict):
 					csize += 8
 					bitstring = bitstring[8:]  # discard read byte
 		bitstring += '0' * [0, 7, 6, 5, 4, 3, 2, 1][len(bitstring) % 8]  # adds enough 0s to get a full byte
-		write.write(bytes([int(bitstring, 2)]))  # write last byte
+		write.write(bytes([int(bitstring, 2)]))  # write final byte
 
 	return fsize, csize
 
@@ -102,6 +102,8 @@ class BinaryTree:
 
 	def increment(self):
 		self.freq += 1
+
+
 
 
 if __name__ == '__main__':
